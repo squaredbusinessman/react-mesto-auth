@@ -1,0 +1,9 @@
+.card {
+  position: relative;
+  min-height: 361px;
+  min-width: 282px;
+  background-color: #fff;
+  border-radius: 10px;
+  color: #000;
+  font-family: 'Inter', Arial,  sans-serif;
+}

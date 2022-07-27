@@ -1,0 +1,4 @@
+.header__authorized-user-wrapper {
+  display: flex;
+  gap: 24px;
+}

@@ -1,0 +1,42 @@
+.user__add-post-btn {
+  position: relative;
+  margin-left: auto;
+  width: 150px;
+  height: 50px;
+  border: 2px solid #fff;
+  background-color: #000;
+  transition: opacity .5s linear;
+  border-radius: 2px;
+}
+
+.user__add-post-btn:before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 2px;
+  top: 22px;
+  left: 60px;
+  background-color: #fff;
+}
+
+.user__add-post-btn:after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 22px;
+  top: 12px;
+  left: 70px;
+  background-color: #fff;
+}
+
+.user__add-post-btn:hover {
+  cursor: pointer;
+  opacity: .6;
+  transition: opacity .2s linear;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .user__add-post-btn {
+    margin: 0 auto;
+  }
+}

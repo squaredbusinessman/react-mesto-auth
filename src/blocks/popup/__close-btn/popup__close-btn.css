@@ -1,0 +1,92 @@
+.popup__close-btn {
+  position: absolute;
+  padding: 0;
+  top: -40px;
+  right: -40px;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: none;
+  transition: opacity .5s linear;
+}
+
+.popup__close-btn:before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: -6px;
+  width: 40px;
+  height: 3px;
+  background-color: #fff;
+  transform: rotate(45deg);
+}
+
+.popup__close-btn:after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: -6px;
+  width: 40px;
+  height: 3px;
+  background-color: #fff;
+  transform: rotate(-45deg);
+}
+
+.popup__close-btn:hover {
+  cursor: pointer;
+  opacity: .6;
+  transition: opacity .2s linear;
+}
+
+.popup__container .popup__close-btn {
+  right: 0;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .popup__close-btn {
+    width: 20px;
+    height: 20px;
+    top: -36px;
+    right: 0;
+  }
+
+  .popup__close-btn:before {
+    width: 20px;
+    height: 2px;
+  }
+
+  .popup__close-btn:after {
+    width: 20px;
+    height: 2px;
+  }
+}
+
+.popup__wrapper_type_confirm .popup__close-btn {
+  right: -30px;
+  top: -30px;
+}
+
+.popup__wrapper_type_confirm .popup__close-btn:before {
+  width: 32px;
+  height: 4px;
+}
+
+.popup__wrapper_type_confirm .popup__close-btn:after {
+  width: 32px;
+  height: 4px;
+}
+
+.popup__wrapper_type_avatar .popup__close-btn {
+  right: -30px;
+  top: -30px;
+}
+
+.popup__wrapper_type_avatar .popup__close-btn:before {
+  width: 32px;
+  height: 4px;
+}
+
+.popup__wrapper_type_avatar .popup__close-btn:after {
+  width: 32px;
+  height: 4px;
+}

@@ -1,0 +1,22 @@
+.user__avatar-wrapper {
+  position: relative;
+}
+
+.user__avatar-wrapper:hover .user__avatar {
+  cursor: pointer;
+  opacity: .2;
+  transition: opacity .2s linear;
+}
+
+.user__avatar-wrapper:hover .user__avatar-editor-btn {
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity .2s linear;
+}
+
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .user__avatar-wrapper {
+    margin-bottom: 22px;
+  }
+}

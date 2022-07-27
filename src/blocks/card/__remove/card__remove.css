@@ -1,0 +1,20 @@
+.card__remove {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 18px;
+  height: 19px;
+  background-color: transparent;
+  border: none;
+  background-image: url(../../../images/card/trash-box.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity .5s linear;
+}
+
+.card__remove:hover {
+  cursor: pointer;
+  opacity: .6;
+  transition: opacity .2s linear;
+}

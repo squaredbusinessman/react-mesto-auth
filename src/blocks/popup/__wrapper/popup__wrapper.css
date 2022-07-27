@@ -1,0 +1,21 @@
+.popup__wrapper {
+  box-sizing: border-box;
+  position: relative;
+  width: 430px;
+  min-height: 258px;
+  padding: 36px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .popup__wrapper {
+    width: 282px;
+    min-height: 322px;
+    padding: 25px 22px;
+  }
+}

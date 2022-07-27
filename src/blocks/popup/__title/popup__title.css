@@ -1,0 +1,23 @@
+.popup__title {
+  margin: 0 0 50px;
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: 900;
+  align-self: flex-start;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .popup__title {
+    margin-bottom: 75px;
+    font-size: 18px;
+    line-height: 122%;
+  }
+}
+
+.popup__wrapper_type_avatar .popup__title {
+  margin-bottom: 54px;
+}
+
+.popup__wrapper_type_confirm .popup__title {
+  margin-bottom: 20px;
+}

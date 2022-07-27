@@ -1,0 +1,22 @@
+.user {
+  margin: 0 auto 47px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Inter', Arial,  sans-serif;
+}
+
+@media (min-width: 768px) and (max-width: 885px) {
+  .user {
+    width: calc(100% - 40px*2);
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .user {
+    width: calc(100% - 19px*2);
+    margin: 0 auto 36px;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

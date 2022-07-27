@@ -1,0 +1,21 @@
+.footer {
+  padding-top: 67px;
+  padding-bottom: 60px;
+  font-family: 'Inter', Arial,  sans-serif;
+}
+
+@media (min-width: 768px) and (max-width: 885px) {
+  .footer {
+    padding-left: 40px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .footer {
+    width: calc(100% - 19px*2);
+    margin: 0 auto;
+    padding-top: 48px;
+    padding-bottom: 36px;
+    padding-left: 19px;
+  }
+}

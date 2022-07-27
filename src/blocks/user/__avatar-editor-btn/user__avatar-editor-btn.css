@@ -1,0 +1,16 @@
+.user__avatar-editor-btn {
+  position: absolute;
+  padding: 0;
+  width: 120px;
+  height: 120px;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  background-image: url(../../../images/user/pencil.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 26px;
+  border: none;
+  border-radius: 50%;
+  opacity: 0;
+}

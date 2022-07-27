@@ -1,0 +1,17 @@
+.user__about {
+  max-width: 330px;
+  font-size: 18px;
+  line-height: 122%;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .user__about {
+    max-width: 200px;
+    font-size: 14px;
+    text-align: center;
+  }
+}

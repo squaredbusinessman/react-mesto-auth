@@ -1,0 +1,8 @@
+.popup__container_type_tooltip {
+  max-width: 430px;
+  max-height: 330px;
+  padding: 60px 36px;
+  background-color: #fff;
+  border-radius: 10px;
+  gap: 0;
+}

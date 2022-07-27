@@ -1,0 +1,6 @@
+.card__text-wrapper {
+  margin: 22px 20px 22px 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

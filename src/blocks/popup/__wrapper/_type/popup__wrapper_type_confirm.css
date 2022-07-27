@@ -1,0 +1,21 @@
+.popup__wrapper_type_confirm {
+  position: relative;
+  min-height: 181px;
+  width: 430px;
+  padding: 36px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+}
+
+@media (min-width: 320px) and (max-width: 500px) {
+  .popup__wrapper_type_confirm {
+    width: calc(100% - 35px*2);
+    padding: 25px 22px;
+  }
+}

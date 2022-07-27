@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 45px;
+  padding-bottom: 41px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
+  font-family: 'Inter', Arial,  sans-serif;
+}
+
+@media (min-width: 768px) and (max-width: 885px) {
+  .header {
+    padding: 45px 40px 41px 40px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .header {
+    padding:28px 27px 32px 27px;
+
+    margin-bottom: 38px;
+  }
+}

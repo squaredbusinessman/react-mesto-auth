@@ -1,0 +1,29 @@
+.user__nick-editor-btn {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 15px;
+  right: -40px;
+  border: 1px solid #fff;
+  background-color: #000;
+  background-image: url(../../../images/user/pencil.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  transition: opacity .5s linear;
+  align-self: center;
+}
+
+.user__nick-editor-btn:hover {
+  cursor: pointer;
+  opacity: .6;
+  transition: opacity .2s linear;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .user__nick-editor-btn {
+    width: 18px;
+    height: 18px;
+    top: 8px;
+    right: -28px;
+  }
+}
