@@ -361,7 +361,14 @@ function App() {
                         />
                     </Route>
                     <Route path="/sign-up">
-                        <Register onRegister={onRegister} closeAllPopups={closeAllPopups} />
+                        <Register
+                            onRegister={onRegister}
+                            onChangeEmail={handleChangeEmail}
+                            onChangePassword={handleChangePassword}
+                            email={currentUser.email}
+                            password={currentUser.password}
+                            closeAllPopups={closeAllPopups}
+                        />
                         <InfoTooltip
                             title={tooltipData.title}
                             image={tooltipData.img}

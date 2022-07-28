@@ -3,16 +3,7 @@ import PopupWithForm from "./PopupWithForm";
 
 const Register = (props) => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    function handleChangeEmail(evt) {
-        setEmail(evt.target.value);
-    }
-
-    function handleChangePassword(evt) {
-        setPassword(evt.target.value);
-    }
+    const { email, password } = props;
 
     function handleSubmit(evt) {
         evt.preventDefault();
@@ -40,7 +31,7 @@ const Register = (props) => {
                     name="email"
                     aria-label="Поле ввода электронной почты пользователя"
                     placeholder="Email"
-                    onChange={handleChangeEmail}
+                    onChange={props.onChangeEmail}
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     autoComplete="off"
                     value={email}
@@ -56,7 +47,7 @@ const Register = (props) => {
                     name="password"
                     aria-label="Поле ввода пароля"
                     placeholder="Пароль"
-                    onChange={handleChangePassword}
+                    onChange={props.onChangePassword}
                     minLength="6"
                     maxLength="20"
                     autoComplete="off"
