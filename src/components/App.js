@@ -259,10 +259,8 @@ function App() {
 
                 const { token } = res;
 
-                if (token) {
-                    localStorage.setItem('jwt', token);
-                    setLoggedIn(true);
-                }
+                localStorage.setItem('jwt', token);
+                setLoggedIn(true);
         });
     }
 
