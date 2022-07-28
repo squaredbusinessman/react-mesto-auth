@@ -9,6 +9,7 @@ export const register = (email, password) => {
         body: JSON.stringify({ email: email, password: password })
     })
         .then(res => res.json())
+        .catch(err => console.error(err))
 };
 
 export const authorize = (email, password) => {
@@ -20,7 +21,8 @@ export const authorize = (email, password) => {
         body: JSON.stringify({ email, password })
     })
         .then(res => res.json())
-        .then(jwt => jwt);
+        .then(jwt => jwt)
+        .catch(err => console.error(err))
 };
 
 export const getContent = (jwt) => {
@@ -32,4 +34,5 @@ export const getContent = (jwt) => {
         }
     })
         .then(res => res.json())
+        .catch(err => console.error(err));
 };
