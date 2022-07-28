@@ -25,6 +25,7 @@ function App() {
         about: '',
         avatar: '',
         email: '',
+        password: '',
     })
 
     const [tooltipData, setToolTipData] = useState({
@@ -249,6 +250,20 @@ function App() {
         return await MestoAuth.getContent(jwt);
     }
 
+    function handleChangeEmail(evt) {
+        setCurrentUser({
+            ...currentUser,
+            email: evt.target.value,
+        });
+    }
+
+    function handleChangePassword(evt) {
+        setCurrentUser({
+            ...currentUser,
+            password: evt.target.value,
+        });
+    }
+
     function onLogin({email, password}) {
         return MestoAuth.authorize(email, password)
             .then((res) => {
@@ -257,7 +272,20 @@ function App() {
 
                 localStorage.setItem('jwt', token);
                 setLoggedIn(true);
-        });
+        })
+            .then(() => {
+                history.push('/');
+            })
+            .then(() => {
+                setCurrentUser({
+                    ...currentUser,
+                    email: '',
+                    password: '',
+                })
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     function onRegister({ email, password }) {
@@ -324,7 +352,13 @@ function App() {
                         onCardLike={handleCardLike}
                     />
                     <Route path="/sign-in">
-                        <Login onLogin={onLogin} />
+                        <Login
+                            onLogin={onLogin}
+                            onChangeEmail={handleChangeEmail}
+                            onChangePassword={handleChangePassword}
+                            email={currentUser.email}
+                            password={currentUser.password}
+                        />
                     </Route>
                     <Route path="/sign-up">
                         <Register onRegister={onRegister} closeAllPopups={closeAllPopups} />
