@@ -1,8 +1,16 @@
 import React from 'react';
 
 const InfoTooltip = (props) => {
+
+    function handleOverlayClose(evt) {
+        evt.stopPropagation();
+        if (evt.target.classList.contains('popup_visible')) {
+            props.onClose();
+        }
+    }
+
     return (
-        <div className={`popup ${props.isOpen && "popup_visible"}`}>
+        <div onClick={handleOverlayClose} className={`popup ${props.isOpen && "popup_visible"}`}>
             <div className="popup__container popup__container_type_tooltip">
                 <img
                     className="popup__img popup__img_type_tooltip"

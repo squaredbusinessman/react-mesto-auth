@@ -1,8 +1,16 @@
 import React from 'react';
 
 const ImagePopup = (props) => {
+
+    function handleOverlayClose(evt) {
+        evt.stopPropagation();
+        if (evt.target.classList.contains('popup_visible')) {
+            props.onClose();
+        }
+    }
+
     return (
-        <div className={`popup popup_id_big-picture ${props.isOpen && 'popup_visible'}`}>
+        <div onClick={handleOverlayClose} className={`popup popup_id_big-picture ${props.isOpen && 'popup_visible'}`}>
             <div className="popup__container">
                 <img
                     className="popup__img"

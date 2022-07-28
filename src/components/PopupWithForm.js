@@ -4,29 +4,33 @@ function PopupWithForm(props) {
 
     const formMainClass = props.formClassName.split(' ').shift();
 
+    function handleEscClose(evt) {
+        if (evt.key === 'Escape') {
+            props.onClose();
+        }
+    }
+
+    function handleOverlayClose(evt) {
+        evt.stopPropagation();
+        if (evt.target.classList.contains('popup_visible')) {
+            props.onClose();
+        }
+    }
+
     useEffect(() => {
-        function handleEscClose(evt) {
-            if (evt.key === 'Escape') {
-                props.onClose();
-            }
+        document.addEventListener('keydown', handleEscClose);
+
+        return () => {
+            document.removeEventListener('keydown', handleEscClose);
         }
 
-        document.onkeydown = handleEscClose;
-    }, []);
-
-    useEffect(() => {
-        function handleOverlayClose(evt) {
-            evt.stopPropagation();
-            if (evt.target.classList.contains('popup_visible')) {
-                props.onClose();
-            }
-        }
-
-        document.onmousedown = handleOverlayClose;
-    }, []);
+    }, [props.isOpen]);
 
     return (
-        <div className={`${props.formClassName} ${props.isOpen ? 'popup_visible' : ''}`}>
+        <div
+            onClick={handleOverlayClose}
+            className={`${props.formClassName} ${props.isOpen ? 'popup_visible' : ''}`}
+        >
             <div className={`${props.wrapperClass}`}>
                 <h2 className={`${formMainClass}__title`}>
                     {props.title}
