@@ -284,7 +284,7 @@ function App() {
                 })
             })
             .catch((err) => {
-                console.log(err);
+                console.log(`Произошла ошибка при попытке авторизации - ${err}`);
             })
     }
 
@@ -329,7 +329,7 @@ function App() {
             })
             .then(() => {})
             .catch((err) => {
-                console.log(err);
+                console.log(`Произошла ошибка при попытке зарегистрировать аккаунт - ${err}`);
             });
     }
 
