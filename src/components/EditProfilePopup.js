@@ -55,7 +55,7 @@ const EditProfilePopup = (props) => {
                     autoComplete="off"
                     required
                 />
-                <span className="popup__input-error popup__input-nickname-error"></span>
+                <span className="popup__input-error popup__input-nickname-error" />
             </label>
             <label className="popup__label">
                 <input
@@ -71,7 +71,7 @@ const EditProfilePopup = (props) => {
                     autoComplete="off"
                     required
                 />
-                <span className="popup__input-error popup__input-about-error"></span>
+                <span className="popup__input-error popup__input-about-error" />
             </label>
         </PopupWithForm>
     );

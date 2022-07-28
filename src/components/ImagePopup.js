@@ -15,7 +15,7 @@ const ImagePopup = (props) => {
                     type="button"
                     className="popup__close-btn"
                     aria-label="Кнопка закрытия попапа"
-                ></button>
+                />
             </div>
         </div>
     );

@@ -48,7 +48,7 @@ const Card = (props) => {
                         type="button"
                         className={cardLikeButtonClassName}
                         aria-label="Кнопка нравится"
-                    ></button>
+                    />
                     <span className="card__likes-counter">{props.card.likes.length}</span>
                 </div>
             </div>
@@ -57,7 +57,7 @@ const Card = (props) => {
                 type="button"
                 className={cardRemoveButtonClassName}
                 aria-label="Кнопка удаления поста"
-            ></button>
+            />
         </li>
     );
 };

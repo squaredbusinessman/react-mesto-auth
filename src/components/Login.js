@@ -60,7 +60,7 @@ const Login = (props) => {
                     autoComplete="off"
                     required
                 />
-                <span className="login__input-error login__input-error_type_email"></span>
+                <span className="login__input-error login__input-error_type_email" />
             </label>
             <label className="login__label">
                 <input
@@ -77,7 +77,7 @@ const Login = (props) => {
                     autoComplete="off"
                     required
                 />
-                <span className="login__input-error login__input-error_type_password"></span>
+                <span className="login__input-error login__input-error_type_password" />
             </label>
             <InfoTooltip />
         </PopupWithForm>

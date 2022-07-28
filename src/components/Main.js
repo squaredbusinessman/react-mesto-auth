@@ -20,7 +20,7 @@ function Main(props) {
                         type="button"
                         className="user__avatar-editor-btn"
                         aria-label="Кнопка редактирования аватара пользователя"
-                    ></button>
+                    />
                 </div>
                 <div className="user__text-wrapper">
                     <h1 className="user__name">{currentUser.name}</h1>
@@ -29,7 +29,7 @@ function Main(props) {
                         type="button"
                         className="user__nick-editor-btn"
                         aria-label="Кнопка редактирования Имени и доп. информации пользователя"
-                    ></button>
+                    />
                     <p className="user__about">{currentUser.about}</p>
                 </div>
                 <button
@@ -37,7 +37,7 @@ function Main(props) {
                     type="button"
                     className="user__add-post-btn"
                     aria-label="Кнопка создания новой публикации"
-                ></button>
+                />
             </section>
             <section>
                 <ul className="cards">

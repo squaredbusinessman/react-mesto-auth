@@ -46,7 +46,7 @@ const Register = (props) => {
                     value={email}
                     required
                 />
-                <span className="register__input-error register__input-error_type_email"></span>
+                <span className="register__input-error register__input-error_type_email" />
             </label>
             <label className="register__label">
                 <input
@@ -63,7 +63,7 @@ const Register = (props) => {
                     value={password}
                     required
                 />
-                <span className="register__input-error register__input-error_type_password"></span>
+                <span className="register__input-error register__input-error_type_password" />
             </label>
         </PopupWithForm>
     );

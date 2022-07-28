@@ -46,7 +46,7 @@ const AddPlacePopup = (props) => {
                     required
                     ref={placeNameRef}
                 />
-                <span className="popup__input-error popup__input-place-name-error"></span>
+                <span className="popup__input-error popup__input-place-name-error" />
             </label>
             <label className="popup__label">
                 <input
@@ -60,7 +60,7 @@ const AddPlacePopup = (props) => {
                     required
                     ref={placeUrlRef}
                 />
-                <span className="popup__input-error popup__input-src-error"></span>
+                <span className="popup__input-error popup__input-src-error" />
             </label>
         </PopupWithForm>
     );

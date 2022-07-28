@@ -40,7 +40,7 @@ const EditAvatarPopup = (props) => {
                     required
                     ref={inputUrlRef}
                 />
-                <span className="popup__input-error popup__input-avatar-url-error"></span>
+                <span className="popup__input-error popup__input-avatar-url-error" />
             </label>
         </PopupWithForm>
     );
