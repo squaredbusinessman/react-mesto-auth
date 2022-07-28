@@ -302,10 +302,13 @@ function App() {
 
                     setTimeout(() => {
                         closeAllPopups();
-                        history.push("/");
                     }, 3000);
                 }
             })
+            .then(() => {})
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     return (

@@ -18,12 +18,7 @@ const Register = (props) => {
         evt.preventDefault();
 
         if (password) {
-            props.onRegister({ email, password })
-                .then(() => {
-            })
-                .catch((err) => {
-                console.log(err);
-            });
+            props.onRegister({ email, password });
         }
     }
 
