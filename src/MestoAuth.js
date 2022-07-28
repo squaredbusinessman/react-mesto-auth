@@ -9,7 +9,7 @@ export const register = (email, password) => {
         body: JSON.stringify({ email: email, password: password })
     })
         .then(res => res.json())
-        .catch(err => console.error(err))
+        .catch(err => console.log(`Произошла ошибка при попытке зарегистрировать аккаунт - ${err}`))
 };
 
 export const authorize = (email, password) => {
@@ -22,7 +22,7 @@ export const authorize = (email, password) => {
     })
         .then(res => res.json())
         .then(jwt => jwt)
-        .catch(err => console.error(err))
+        .catch(err => console.log(`Произошла ошибка при попытке авторизации - ${err}`))
 };
 
 export const getContent = (jwt) => {
@@ -34,5 +34,5 @@ export const getContent = (jwt) => {
         }
     })
         .then(res => res.json())
-        .catch(err => console.error(err));
+        .catch(err => console.log(`Произошла ошибка при попытке получить токен пользователя - ${err}`))
 };

@@ -222,12 +222,20 @@ function App() {
         if (jwt) {
             auth(jwt)
                 .then(
-                    (response) => {
-                        response.json();
-                    }
-                )
+                    (res) => {
+
+                        const { data } = res;
+
+                        setCurrentUser({
+                            ...currentUser,
+                            email: data.email,
+                        })
+
+                        setLoggedIn(true);
+                    })
+                .catch(err => console.log(`Произошла ошибка - ${err}, при аутентификации с токеном - ${jwt}`))
         }
-    }, [loggedIn]);
+    }, []);
 
     useEffect(() => {
 
@@ -238,19 +246,7 @@ function App() {
 
 
     const auth = async (jwt) => {
-        return await MestoAuth.getContent(jwt)
-            .then(
-                (res) => {
-
-                    const { data } = res;
-
-                    setCurrentUser({
-                        ...currentUser,
-                        email: data.email,
-                    })
-
-                    setLoggedIn(true);
-                });
+        return await MestoAuth.getContent(jwt);
     }
 
     function onLogin({email, password}) {
