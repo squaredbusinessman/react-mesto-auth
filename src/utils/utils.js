@@ -7,3 +7,6 @@ export const apiConfig = {
         'Content-Type': 'application/json'
     },
 };
+
+// Autorization
+export const BASE_URL = "https://auth.nomoreparties.co";
