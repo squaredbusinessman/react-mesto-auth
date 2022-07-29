@@ -283,9 +283,7 @@ function App() {
                     password: '',
                 })
             })
-            .catch((err) => {
-                console.log(`Произошла ошибка при попытке авторизации - ${err}`);
-            })
+            .catch((err) => console.log(`Произошла ошибка при попытке авторизации - ${err}`))
     }
 
     function onRegister({ email, password }) {
@@ -327,10 +325,7 @@ function App() {
                     }, 3000);
                 }
             })
-            .then(() => {})
-            .catch((err) => {
-                console.log(`Произошла ошибка при попытке зарегистрировать аккаунт - ${err}`);
-            });
+            .catch((err) => console.log(`Произошла ошибка при попытке зарегистрировать аккаунт - ${err}`))
     }
 
     return (
