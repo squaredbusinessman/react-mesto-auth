@@ -1,6 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 const InfoTooltip = (props) => {
+
+    function handleEscClose(evt) {
+        if (evt.key === 'Escape') {
+            props.onClose();
+        }
+    }
+
+    useEffect(() => {
+        if (props.isOpen) {
+            document.addEventListener('keydown', handleEscClose);
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleEscClose);
+        }
+
+    }, [props.isOpen]);
 
     function handleOverlayClose(evt) {
         evt.stopPropagation();
@@ -8,6 +25,8 @@ const InfoTooltip = (props) => {
             props.onClose();
         }
     }
+
+
 
     return (
         <div onClick={handleOverlayClose} className={`popup ${props.isOpen && "popup_visible"}`}>

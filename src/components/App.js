@@ -52,39 +52,6 @@ function App() {
 
     const history = useHistory();
 
-    useEffect(() => {
-        api.getProfile()
-            .then(
-            (userData) => {
-                setCurrentUser({
-                    ...currentUser,
-                    name: userData.name,
-                    about: userData.about,
-                    avatar: userData.avatar,
-                    _id: userData._id
-                })
-            })
-            .catch(
-                (error) => {
-                    console.log(
-                        `Произошла ошибка при получении данных профиля пользователя - ${error}`
-                );
-        })
-    }, [loggedIn]);
-
-    useEffect(() => {
-        api.getCards().then(
-            (cardsData) => {
-                setCards(cardsData);
-            })
-            .catch(
-            (error) => {
-                console.log(
-                    `Произошла ошибка получении карточек с сервера - ${error}`
-                );
-            }
-        )}, [loggedIn]);
-
     function handleEditAvatarClick() {
         setEditAvatarPopup(true);
     }
@@ -217,10 +184,26 @@ function App() {
     }
 
     useEffect(() => {
-
         const jwt = localStorage.getItem('jwt');
 
         if (jwt) {
+            api.getAllData().then(
+                res => {
+                    const [userData, cardsData] = res;
+
+                    setCurrentUser({
+                        ...currentUser,
+                        name: userData.name,
+                        about: userData.about,
+                        avatar: userData.avatar,
+                        _id: userData._id
+                    });
+
+                    setCards(cardsData);
+                }
+            )
+                .catch(error => console.log(`Произошла ошибка получении данных с сервера - ${error}`))
+
             auth(jwt)
                 .then(
                     (res) => {
@@ -236,7 +219,7 @@ function App() {
                     })
                 .catch(err => console.log(`Произошла ошибка - ${err}, при аутентификации с токеном - ${jwt}`))
         }
-    }, []);
+    }, [loggedIn]);
 
     useEffect(() => {
 
@@ -244,7 +227,6 @@ function App() {
             history.push('/');
         }
     }, [loggedIn]);
-
 
     const auth = async (jwt) => {
         return await MestoAuth.getContent(jwt);
@@ -275,13 +257,6 @@ function App() {
         })
             .then(() => {
                 history.push('/');
-            })
-            .then(() => {
-                setCurrentUser({
-                    ...currentUser,
-                    email: '',
-                    password: '',
-                })
             })
             .catch((err) => console.log(`Произошла ошибка при попытке авторизации - ${err}`))
     }
@@ -315,7 +290,7 @@ function App() {
 
                     setToolTipData({
                         ...tooltipData,
-                        title: res.error,
+                        title: "Что-то пошло не так! Попробуйте ещё раз.",
                         img: failureLogoPath,
                         isOpen: true,
                     })
@@ -330,8 +305,13 @@ function App() {
 
     function handleSignOut() {
         localStorage.removeItem('jwt');
-        history.push('/sign-in');
+        setCurrentUser({
+            ...currentUser,
+            email: '',
+            password: '',
+        })
         setLoggedIn(false);
+        history.push('/sign-in');
     }
 
     return (

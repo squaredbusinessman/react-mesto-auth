@@ -42,7 +42,9 @@ function PopupWithForm(props) {
                     name={props.name}
                     action="src/components/App#"
                     method="post"
-                    onSubmit={props.onSubmit}>
+                    onSubmit={props.onSubmit}
+                    autoComplete="off"
+                >
 
                     {props.children}
 

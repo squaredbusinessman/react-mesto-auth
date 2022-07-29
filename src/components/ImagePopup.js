@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 const ImagePopup = (props) => {
 
@@ -8,6 +8,23 @@ const ImagePopup = (props) => {
             props.onClose();
         }
     }
+
+    function handleEscClose(evt) {
+        if (evt.key === 'Escape') {
+            props.onClose();
+        }
+    }
+
+    useEffect(() => {
+        if (props.isOpen) {
+            document.addEventListener('keydown', handleEscClose);
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleEscClose);
+        }
+
+    }, [props.isOpen]);
 
     return (
         <div onClick={handleOverlayClose} className={`popup popup_id_big-picture ${props.isOpen && 'popup_visible'}`}>
