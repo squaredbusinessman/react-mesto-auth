@@ -328,10 +328,16 @@ function App() {
             .catch((err) => console.log(`Произошла ошибка при попытке зарегистрировать аккаунт - ${err}`))
     }
 
+    function handleSignOut() {
+        localStorage.removeItem('jwt');
+        history.push('/sign-in');
+        setLoggedIn(false);
+    }
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="App">
-                <Header email={currentUser.email} />
+                <Header email={currentUser.email} onSignOut={handleSignOut} />
                 <Switch>
                     <ProtectedRoute
                         exact

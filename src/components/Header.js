@@ -1,15 +1,8 @@
 import React from 'react';
 import headerLogoPath from "../images/logo/logo-mesto.svg";
-import {Link, Route, useHistory} from "react-router-dom";
+import {Link, Route} from "react-router-dom";
 
 const Header = (props) => {
-
-    const history = useHistory();
-
-    function handleSignOut() {
-        localStorage.removeItem('jwt');
-        history.push('/sign-in');
-    }
 
     return (
         <header className="header">
@@ -24,7 +17,7 @@ const Header = (props) => {
                 <div className="header__authorized-user-wrapper">
                     <p className="header__user-email">{`${props.email}`}</p>
                     <button
-                        onClick={handleSignOut}
+                        onClick={props.onSignOut}
                         className="header__button"
                     >
                         Выйти
