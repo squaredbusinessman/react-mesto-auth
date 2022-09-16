@@ -4,7 +4,6 @@ class Api {
     constructor(config) {
         this._profileUrl = config.userUrl;
         this._cardsUrl = config.cardsUrl;
-        this._headers = config.headers;
     }
 
     _handleResponse = (response) => {
@@ -29,7 +28,10 @@ class Api {
     addCard = (data) => {
         return fetch(this._cardsUrl, {
             method: 'POST',
-            headers: this._headers,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(data)
         })
             .then((res) => this._handleResponse(res))
@@ -38,7 +40,10 @@ class Api {
     deleteCard = (id) => {
         return fetch(`${this._cardsUrl}/${id}`, {
             method: 'DELETE',
-            headers: this._headers,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            },
         })
             .then((res) => this._handleResponse(res))
     }
@@ -57,7 +62,10 @@ class Api {
     updateProfile = (data) => {
         return fetch(this._profileUrl, {
             method: 'PATCH',
-            headers: this._headers,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(data)
         })
             .then((res) => this._handleResponse(res))
@@ -67,7 +75,10 @@ class Api {
     updateAvatar = (newAvatarUrl) => {
         return fetch(`${this._profileUrl}/avatar` , {
             method: 'PATCH',
-            headers: this._headers,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ avatar: newAvatarUrl })
         })
             .then((res) => this._handleResponse(res))
@@ -76,7 +87,10 @@ class Api {
     changeLikeCardStatus = (id, isLiked) => {
         return fetch(`${this._cardsUrl}/${id}/likes`, {
             method: `${isLiked ? 'PUT' : 'DELETE'}`,
-            headers: this._headers
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            },
         })
             .then((res) => this._handleResponse(res));
     }
