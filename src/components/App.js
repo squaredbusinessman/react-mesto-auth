@@ -249,8 +249,6 @@ function App() {
             .then((res) => {
 
                 localStorage.setItem('jwt', res);
-                console.log(localStorage.getItem('jwt'));
-
                 setLoggedIn(true);
         })
             .then(() => {
@@ -272,11 +270,9 @@ function App() {
                         isOpen: true,
                     })
 
-                    const { data } = res;
-
                     setCurrentUser({
                         ...currentUser,
-                        email: data.email,
+                        email: res.email,
                     });
 
                     setTimeout(() => {
