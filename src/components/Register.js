@@ -9,7 +9,7 @@ const Register = (props) => {
         evt.preventDefault();
 
         if (password) {
-            props.onRegister({ email, password });
+            props.onRegister(email, password);
         }
     }
 

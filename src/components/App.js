@@ -14,7 +14,7 @@ import Login from "./Login";
 import Register from "./Register";
 import ProtectedRoute from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
-import * as MestoAuth from "../MestoAuth";
+import { authorize, register, tokenControl } from "../MestoAuth";
 import successLogoPath from "../images/tooltip/success.svg";
 import failureLogoPath from "../images/tooltip/failure.svg";
 
@@ -49,6 +49,10 @@ function App() {
     const [cards, setCards] = useState([]);
 
     const [loggedIn, setLoggedIn] = useState(false);
+
+    const auth = async (jwt) => {
+        return await tokenControl(jwt);
+    }
 
     const history = useHistory();
 
@@ -145,7 +149,7 @@ function App() {
     function handleCardLike(card) {
         const { likes, _id } = card;
         // проверяем лайк
-        const isLiked = likes.some(like => like._id === currentUser._id);
+        const isLiked = likes.some(like => like === currentUser._id);
         // отправляем запрос в АПИ и получаем обновленные данные карточки
         api.changeLikeCardStatus(_id, !isLiked)
             .then((newCard) => {
@@ -187,37 +191,35 @@ function App() {
         const jwt = localStorage.getItem('jwt');
 
         if (jwt) {
-            api.getAllData().then(
-                res => {
-                    const [userData, cardsData] = res;
-
-                    setCurrentUser({
-                        ...currentUser,
-                        name: userData.name,
-                        about: userData.about,
-                        avatar: userData.avatar,
-                        _id: userData._id
-                    });
-
-                    setCards(cardsData);
-                }
-            )
-                .catch(error => console.log(`Произошла ошибка получении данных с сервера - ${error}`))
-
             auth(jwt)
                 .then(
                     (res) => {
 
-                        const { data } = res;
-
                         setCurrentUser({
                             ...currentUser,
-                            email: data.email,
+                            email: res.email,
                         })
 
                         setLoggedIn(true);
                     })
                 .catch(err => console.log(`Произошла ошибка - ${err}, при аутентификации с токеном - ${jwt}`))
+
+            api.getAllData()
+                .then(res => {
+                        const [userData, cardsData] = res;
+
+                        setCurrentUser({
+                            ...currentUser,
+                            name: userData.name,
+                            about: userData.about,
+                            avatar: userData.avatar,
+                            _id: userData._id,
+                        });
+
+                        setCards(cardsData);
+                    }
+                )
+                .catch(error => console.log(`Произошла ошибка получении данных с сервера - ${error}`))
         }
     }, [loggedIn]);
 
@@ -227,10 +229,6 @@ function App() {
             history.push('/');
         }
     }, [loggedIn]);
-
-    const auth = async (jwt) => {
-        return await MestoAuth.getContent(jwt);
-    }
 
     function handleChangeEmail(evt) {
         setCurrentUser({
@@ -246,13 +244,13 @@ function App() {
         });
     }
 
-    function onLogin({email, password}) {
-        return MestoAuth.authorize(email, password)
+    function onLogin(email, password) {
+        return authorize(email, password)
             .then((res) => {
 
-                const { token } = res;
+                localStorage.setItem('jwt', res);
+                console.log(localStorage.getItem('jwt'));
 
-                localStorage.setItem('jwt', token);
                 setLoggedIn(true);
         })
             .then(() => {
@@ -261,8 +259,8 @@ function App() {
             .catch((err) => console.log(`Произошла ошибка при попытке авторизации - ${err}`))
     }
 
-    function onRegister({ email, password }) {
-        return MestoAuth.register(email, password)
+    function onRegister(email, password) {
+        return register(email, password)
             .then((res) => {
 
                 if (!res.error) {

@@ -18,7 +18,10 @@ class Api {
     getCards = () => {
         return fetch(this._cardsUrl, {
             method: 'GET',
-            headers: this._headers
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            },
         })
             .then((res) => this._handleResponse(res));
     }
@@ -43,7 +46,10 @@ class Api {
     getProfile = () => {
         return fetch(this._profileUrl, {
             method: 'GET',
-            headers: this._headers
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json'
+            },
         })
             .then((res) => this._handleResponse(res))
     }

@@ -18,14 +18,14 @@ const Card = (props) => {
     const currentUser = useContext(CurrentUserContext);
 
     // Определяем владельца карточки
-    const isOwner = props.card.owner._id === currentUser._id;
+    const isOwner = props.card.owner === currentUser._id;
 
     const cardRemoveButtonClassName = (
         `card__remove ${isOwner ? `card__remove_visible` : ''}`
     );
 
     // Проверяем, есть ли у карточки лайк, поставленный текущим пользователем
-    const isLiked = props.card.likes.some(like => like._id === currentUser._id);
+    const isLiked = props.card.likes.some(like => like === currentUser._id);
 
     const cardLikeButtonClassName = (
         `card__like ${isLiked ? `card__like_active` : ''}`

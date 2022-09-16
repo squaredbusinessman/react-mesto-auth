@@ -3,12 +3,12 @@ import PopupWithForm from "./PopupWithForm";
 
 const Login = (props) => {
 
-    const {email, password} = props
+    const { email, password } = props
 
     function handleSubmit(evt) {
         evt.preventDefault();
 
-        props.onLogin({ email, password });
+        props.onLogin(email, password);
     }
 
     return (
