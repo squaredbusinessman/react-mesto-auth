@@ -255,8 +255,6 @@ function App() {
                 history.push('/');
             })
             .catch((err) => {
-                console.log(`Произошла ошибка при попытке авторизации - ${err}`);
-
                 setToolTipData({
                     ...tooltipData,
                     title: "Неправильный e-mail или пароль!",
@@ -267,6 +265,8 @@ function App() {
                 setTimeout(() => {
                     closeAllPopups();
                 }, 3000);
+
+                console.log(`Произошла ошибка при попытке авторизации - ${err.code}`);
             })
     }
 
@@ -342,6 +342,12 @@ function App() {
                             onChangePassword={handleChangePassword}
                             email={currentUser.email}
                             password={currentUser.password}
+                        />
+                        <InfoTooltip
+                            title={tooltipData.title}
+                            image={tooltipData.img}
+                            isOpen={tooltipData.isOpen}
+                            onClose={closeAllPopups}
                         />
                     </Route>
                     <Route path="/sign-up">
