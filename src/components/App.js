@@ -254,47 +254,56 @@ function App() {
             .then(() => {
                 history.push('/');
             })
-            .catch((err) => console.log(`Произошла ошибка при попытке авторизации - ${err}`))
+            .catch((err) => {
+                console.log(`Произошла ошибка при попытке авторизации - ${err}`);
+
+                setToolTipData({
+                    ...tooltipData,
+                    title: "Неправильный e-mail или пароль!",
+                    img: failureLogoPath,
+                    isOpen: true,
+                });
+
+                setTimeout(() => {
+                    closeAllPopups();
+                }, 3000);
+            })
     }
 
     function onRegister(email, password) {
         return register(email, password)
             .then((res) => {
+                setToolTipData({
+                    ...tooltipData,
+                    title: "Вы успешно зарегистрировались!",
+                    img: successLogoPath,
+                    isOpen: true,
+                })
 
-                if (!res.error) {
+                setCurrentUser({
+                    ...currentUser,
+                    email: res.email,
+                });
 
-                    setToolTipData({
-                        ...tooltipData,
-                        title: "Вы успешно зарегистрировались!",
-                        img: successLogoPath,
-                        isOpen: true,
-                    })
-
-                    setCurrentUser({
-                        ...currentUser,
-                        email: res.email,
-                    });
-
-                    setTimeout(() => {
-                        closeAllPopups();
-                        history.push("/sign-in");
-                    }, 3000);
-
-                } else {
-
-                    setToolTipData({
-                        ...tooltipData,
-                        title: "Что-то пошло не так! Попробуйте ещё раз.",
-                        img: failureLogoPath,
-                        isOpen: true,
-                    })
-
-                    setTimeout(() => {
-                        closeAllPopups();
-                    }, 3000);
-                }
+                setTimeout(() => {
+                    closeAllPopups();
+                    history.push("/sign-in");
+                }, 3000);
             })
-            .catch((err) => console.log(`Произошла ошибка при попытке зарегистрировать аккаунт - ${err}`))
+            .catch((err) => {
+                console.log(`Произошла ошибка при попытке зарегистрировать аккаунт - ${err}`);
+
+                setToolTipData({
+                    ...tooltipData,
+                    title: "Что-то пошло не так! Попробуйте ещё раз.",
+                    img: failureLogoPath,
+                    isOpen: true,
+                });
+
+                setTimeout(() => {
+                    closeAllPopups();
+                }, 3000);
+            })
     }
 
     function handleSignOut() {
